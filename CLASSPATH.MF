@@ -1,0 +1,1 @@
+Class-Path: lib/gson-2.2.2.jar lib/jackson-core-asl-1.9.2.jar lib/jackson-jaxrs-1.9.2.jar lib/jackson-mapper-asl-1.9.2.jar lib/jackson-xc-1.9.2.jar lib/java-json.jar lib/jersey-client-1.19.jar lib/jersey-core-1.19.jar lib/jersey-json-1.19.jar lib/jersey-server-1.19.jar lib/jersey-servlet-1.19.jar lib/jettison-1.1.jar lib/jsr311-api-1.1.1.jar lib/log4j-1.2.15.jar lib/ojdbc14.jar
