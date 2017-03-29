@@ -20,8 +20,7 @@ public class AssignmentProcess {
     private static final String E0000 = "Parameter is null";
     private static final String E1000 = "Data not found";
     private static final String E2000 = "Please specify Todo Id";
-    private static final String E3000 = "Please specify Subject"; 
-    private static final String E4000 = "Found error";
+    private static final String E3000 = "Found error";
         
     public AssignmentProcess() {
         super();
@@ -38,8 +37,8 @@ public class AssignmentProcess {
                 }
                 catch( Exception err ){
                     err.printStackTrace();
-                    jsonResult.put("responseCode","E4000");
-                    jsonResult.put("responseMessage",E4000);   
+                    jsonResult.put("responseCode","E3000");
+                    jsonResult.put("responseMessage",E3000);   
                 }
             }
             else if(!Tools.chkNull(todoId).equalsIgnoreCase("") && !Tools.chkNull(taskId).equalsIgnoreCase("")){
@@ -48,8 +47,8 @@ public class AssignmentProcess {
                 }
                 catch( Exception err ){
                     err.printStackTrace();
-                    jsonResult.put("responseCode","E4000");
-                    jsonResult.put("responseMessage",E4000);   
+                    jsonResult.put("responseCode","E3000");
+                    jsonResult.put("responseMessage",E3000);   
                 }
             }
             else if(Tools.chkNull(todoId).equalsIgnoreCase("")){
