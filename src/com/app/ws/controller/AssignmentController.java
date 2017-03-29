@@ -24,25 +24,18 @@ public class AssignmentController {
     @GET
     @Path("Assignment/{todoId}")
     public JSONObject getData(@PathParam("todoId") String todoId) throws Exception{
-        System.out.println("todoId: "+todoId);   
-        
         AssignmentProcess assignmentProcess = new AssignmentProcess();
         JSONObject jsonObject = assignmentProcess.queryTaskList(todoId, "");
         
-        System.out.println("Assignment GET");          
         return jsonObject;
     }
     
     @GET
     @Path("Assignment/{todoId}/{taskId}")
     public JSONObject getData(@PathParam("todoId") String todoId, @PathParam("taskId") String taskId) throws Exception{
-        System.out.println("todoId: "+todoId);   
-        System.out.println("taskId: "+taskId); 
-        
         AssignmentProcess assignmentProcess = new AssignmentProcess();
         JSONObject jsonObject = assignmentProcess.queryTaskList(todoId, taskId);
         
-        System.out.println("Assignment GET");          
         return jsonObject;
     }
         
@@ -54,7 +47,6 @@ public class AssignmentController {
         AssignmentProcess assignmentProcess = new AssignmentProcess();
         JSONObject jsonObject = assignmentProcess.insertNewTask(inputParam);
         
-        System.out.println("Assignment POST");          
         return jsonObject;
     }
     
@@ -62,13 +54,11 @@ public class AssignmentController {
     @Path("Assignment")
     @Produces({MediaType.APPLICATION_JSON}) 
     @Consumes(MediaType.APPLICATION_JSON)
-    public JSONObject updateData(JSONObject inputParam) throws Exception{
+    public JSONObject updateData(JSONArray inputParam) throws Exception{
         JSONObject jsonObject = new JSONObject();
-        
         AssignmentProcess assignmentProcess = new AssignmentProcess();
-        assignmentProcess.callImportDeclaration(inputParam);
+        assignmentProcess.updateTask(inputParam);
         
-        System.out.println("Assignment PUT");          
         return jsonObject;
     }
     
@@ -76,12 +66,11 @@ public class AssignmentController {
     @Path("Assignment")
     @Produces({MediaType.APPLICATION_JSON}) 
     @Consumes(MediaType.APPLICATION_JSON)
-    public JSONObject deleteData(JSONObject inputParam) throws Exception{
+    public JSONObject deleteData(JSONArray inputParam) throws Exception{
         JSONObject jsonObject = new JSONObject();
-        
         AssignmentProcess assignmentProcess = new AssignmentProcess();
+        assignmentProcess.deleteTask(inputParam);
         
-        System.out.println("Assignment DELETE");          
         return jsonObject;
     }
 }

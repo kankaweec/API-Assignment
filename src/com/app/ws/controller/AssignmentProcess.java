@@ -11,92 +11,172 @@ import org.codehaus.jettison.json.JSONObject;
 
 public class AssignmentProcess {
     private static final String I0000 = "Save successfully";
+    private static final String I1000 = "Save failure";
+    private static final String I2000 = "Edit successfully";
+    private static final String I3000 = "Edit failure";
+    private static final String I4000 = "Delete successfully";
+    private static final String I5000 = "Delete failure";
     
     private static final String E0000 = "Parameter is null";
     private static final String E1000 = "Data not found";
     private static final String E2000 = "Please specify Todo Id";
-    private static final String E3000 = "Please specify Subject";
+    private static final String E3000 = "Please specify Subject"; 
+    private static final String E4000 = "Found error";
         
     public AssignmentProcess() {
         super();
     }
     
-    public String callImportDeclaration(JSONObject inputParam) {
-            
-        JSONObject jsonImportDeclarationResult = new JSONObject(); 
-            
-        try {
-            jsonImportDeclarationResult.put("responseCode","");
-                
-            if (inputParam == null) {
-                jsonImportDeclarationResult.put("responseCode","E2000");
-                jsonImportDeclarationResult.put("responseMessage",E2000+", inputParam is null");    
-            } else {
-                String inboxId_from = inputParam.getString("inboxId_from");
-                String inboxId_to   = inputParam.getString("inboxId_to");
-                String where        = inputParam.getString("where");
-                String order_by     = inputParam.getString("order_by");
-                
-//                jsonImportDeclarationResult = queryImportDeclaration(inboxId_from, inboxId_to, where, order_by);
-            } 
-                
-        } catch (Exception e) {
-            try {
-                jsonImportDeclarationResult.put("responseCode","E1000");
-//                jsonImportDeclarationResult.put("responseMessage",E1000+", "+"Exception Error : Classname = "+className+" : MethodName = "+methodName+" : Error = "+e.getMessage());  
-            } catch (Exception je){
-                je.printStackTrace();    
-            }
-        }
-            
-        return jsonImportDeclarationResult.toString();
-    }
-    
     public JSONObject queryTaskList(String todoId, String taskId) {    
         TodoService todoService     = new TodoService();
-        JSONObject result           = new JSONObject();
+        JSONObject jsonResult       = new JSONObject();
         
         try{
             if(!Tools.chkNull(todoId).equalsIgnoreCase("") && Tools.chkNull(taskId).equalsIgnoreCase("")){
-                result = todoService.viewAllTodoList(todoId);
+                try{
+                    jsonResult = todoService.viewAllTodoList(todoId);
+                }
+                catch( Exception err ){
+                    err.printStackTrace();
+                    jsonResult.put("responseCode","E4000");
+                    jsonResult.put("responseMessage",E4000);   
+                }
             }
             else if(!Tools.chkNull(todoId).equalsIgnoreCase("") && !Tools.chkNull(taskId).equalsIgnoreCase("")){
-                result = todoService.viewSingleTodoList(todoId, taskId);
+                try{
+                    jsonResult = todoService.viewSingleTodoList(todoId, taskId);
+                }
+                catch( Exception err ){
+                    err.printStackTrace();
+                    jsonResult.put("responseCode","E4000");
+                    jsonResult.put("responseMessage",E4000);   
+                }
             }
             else if(Tools.chkNull(todoId).equalsIgnoreCase("")){
-                result.put("responseCode", "E2000");
-                result.put("responseMessage", E2000);
+                jsonResult.put("responseCode", "E2000");
+                jsonResult.put("responseMessage", E2000);
             }
             
-            if( result.length()<=0 ){
-                result.put("responseCode", "E1000");
-                result.put("responseMessage", E1000);
+            if( jsonResult.length()<=0 ){
+                jsonResult.put("responseCode", "E1000");
+                jsonResult.put("responseMessage", E1000);
             }
         }
         catch( JSONException jsonErr ){
             jsonErr.printStackTrace();
         }
 
-        return result;
+        return jsonResult;
     } 
     
     public JSONObject insertNewTask(JSONArray inputParam) {    
         TodoService todoService     = new TodoService();
-        JSONObject result           = new JSONObject();
+        JSONObject jsonResult       = new JSONObject();
+        String executeStatus        = "";
         
         try{
             if (inputParam == null) {
-                result.put("responseCode","E0000");
-                result.put("responseMessage",E0000);    
+                jsonResult.put("responseCode","E0000");
+                jsonResult.put("responseMessage",E0000);    
             }
             else{
-                result = todoService.addNewTaskList(inputParam);
+                try{
+                    executeStatus = todoService.insertNewTask(inputParam);
+                    
+                    if( executeStatus.equals("success")){
+                        jsonResult.put("responseCode","I0000");
+                        jsonResult.put("responseMessage",I0000);    
+                    }
+                    else{
+                        jsonResult.put("responseCode","I1000");
+                        jsonResult.put("responseMessage",I1000);   
+                    }
+                }
+                catch( Exception err ){
+                    err.printStackTrace();
+                    jsonResult.put("responseCode","I1000");
+                    jsonResult.put("responseMessage",I1000);   
+                }
             } 
         }
         catch( JSONException jsonErr ){
             jsonErr.printStackTrace();
         }
 
-        return result;
+        return jsonResult;
+    } 
+    
+    public JSONObject updateTask(JSONArray inputParam) {    
+        TodoService todoService     = new TodoService();
+        JSONObject jsonResult       = new JSONObject();
+        String executeStatus        = "";
+        
+        try{
+            if (inputParam == null) {
+                jsonResult.put("responseCode","E0000");
+                jsonResult.put("responseMessage",E0000);    
+            }
+            else{
+                try{
+                    executeStatus = todoService.updateTask(inputParam);
+                    
+                    if( executeStatus.equals("success")){
+                        jsonResult.put("responseCode","I2000");
+                        jsonResult.put("responseMessage",I2000);    
+                    }
+                    else{
+                        jsonResult.put("responseCode","I3000");
+                        jsonResult.put("responseMessage",I3000);   
+                    }
+                }
+                catch( Exception err ){
+                    err.printStackTrace();
+                    jsonResult.put("responseCode","I3000");
+                    jsonResult.put("responseMessage",I3000);   
+                }
+            } 
+        }
+        catch( JSONException jsonErr ){
+            jsonErr.printStackTrace();
+        }
+
+        return jsonResult;
+    } 
+    
+    public JSONObject deleteTask(JSONArray inputParam) {    
+        TodoService todoService     = new TodoService();
+        JSONObject jsonResult       = new JSONObject();
+        String executeStatus        = "";
+        
+        try{
+            if (inputParam == null) {
+                jsonResult.put("responseCode","E0000");
+                jsonResult.put("responseMessage",E0000);    
+            }
+            else{
+                try{
+                    executeStatus = todoService.deleteTask(inputParam);
+                    
+                    if( executeStatus.equals("success")){
+                        jsonResult.put("responseCode","I4000");
+                        jsonResult.put("responseMessage",I4000);    
+                    }
+                    else{
+                        jsonResult.put("responseCode","I5000");
+                        jsonResult.put("responseMessage",I5000);   
+                    }
+                }
+                catch( Exception err ){
+                    err.printStackTrace();
+                    jsonResult.put("responseCode","I5000");
+                    jsonResult.put("responseMessage",I5000);   
+                }
+            } 
+        }
+        catch( JSONException jsonErr ){
+            jsonErr.printStackTrace();
+        }
+
+        return jsonResult;
     } 
 }
