@@ -25,18 +25,18 @@ public class AssignmentController {
     @Path("Assignment/{todoId}")
     public JSONObject getData(@PathParam("todoId") String todoId) throws Exception{
         AssignmentProcess assignmentProcess = new AssignmentProcess();
-        JSONObject jsonObject = assignmentProcess.queryTaskList(todoId, "");
+        JSONObject result = assignmentProcess.queryTaskList(todoId, "");
         
-        return jsonObject;
+        return result;
     }
     
     @GET
     @Path("Assignment/{todoId}/{taskId}")
     public JSONObject getData(@PathParam("todoId") String todoId, @PathParam("taskId") String taskId) throws Exception{
         AssignmentProcess assignmentProcess = new AssignmentProcess();
-        JSONObject jsonObject = assignmentProcess.queryTaskList(todoId, taskId);
+        JSONObject result = assignmentProcess.queryTaskList(todoId, taskId);
         
-        return jsonObject;
+        return result;
     }
         
     @POST
@@ -45,9 +45,9 @@ public class AssignmentController {
     @Consumes(MediaType.APPLICATION_JSON)
     public JSONObject insertData(JSONArray inputParam) throws Exception{
         AssignmentProcess assignmentProcess = new AssignmentProcess();
-        JSONObject jsonObject = assignmentProcess.insertNewTask(inputParam);
+        JSONObject result = assignmentProcess.insertNewTask(inputParam);
         
-        return jsonObject;
+        return result;
     }
     
     @PUT
@@ -55,11 +55,10 @@ public class AssignmentController {
     @Produces({MediaType.APPLICATION_JSON}) 
     @Consumes(MediaType.APPLICATION_JSON)
     public JSONObject updateData(JSONArray inputParam) throws Exception{
-        JSONObject jsonObject = new JSONObject();
         AssignmentProcess assignmentProcess = new AssignmentProcess();
-        assignmentProcess.updateTask(inputParam);
+        JSONObject result = assignmentProcess.updateTask(inputParam);
         
-        return jsonObject;
+        return result;
     }
     
     @DELETE
@@ -67,10 +66,9 @@ public class AssignmentController {
     @Produces({MediaType.APPLICATION_JSON}) 
     @Consumes(MediaType.APPLICATION_JSON)
     public JSONObject deleteData(JSONArray inputParam) throws Exception{
-        JSONObject jsonObject = new JSONObject();
         AssignmentProcess assignmentProcess = new AssignmentProcess();
-        assignmentProcess.deleteTask(inputParam);
+        JSONObject result = assignmentProcess.deleteTask(inputParam);
         
-        return jsonObject;
+        return result;
     }
 }

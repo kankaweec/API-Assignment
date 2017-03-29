@@ -20,7 +20,7 @@ public class TodoService {
         
         // SELECT_WHERE_WITH_CRITERIA
         
-        // FOR_EXAMPLE_VIEW_ALL_TASK
+        // FOR_EXAMPLE_GET_VALUE
         for(int i=1;i<=3;i++){
             taskObject = new JSONObject();
             taskObject.put("taskId", i);
@@ -46,7 +46,7 @@ public class TodoService {
             
         // SELECT_WHERE_WITH_CRITERIA
         
-        // FOR_EXAMPLE_VIEW_SINGLE_TASK
+        // FOR_EXAMPLE_GET_VALUE
         taskObject = new JSONObject();
         taskObject.put("taskId", taskId);
         taskObject.put("subject", "Assignment "+taskId);
