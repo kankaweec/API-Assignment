@@ -4,7 +4,9 @@ dotography  assignment
 
 - URL
 
-        AssignmentRestService/rest/Assignment
+        AssignmentRestService/rest/Assignment/{todoId}/{taskId}
+        
+-------------------------------------------------------------------------------------------------------------------
 
 - Method
 
@@ -48,3 +50,11 @@ dotography  assignment
           "responseCode": "E2000",
           "responseMessage": "Please specify Todo Id"
         }
+        
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+- Method
+
+        POST
