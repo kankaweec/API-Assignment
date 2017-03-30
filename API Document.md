@@ -10,6 +10,10 @@ dotography  assignment
 
 - URL
 
+        AssignmentRestService/rest/Assignment/{todoId}
+        
+        OR
+        
         AssignmentRestService/rest/Assignment/{todoId}/{taskId}
 
 - Method
