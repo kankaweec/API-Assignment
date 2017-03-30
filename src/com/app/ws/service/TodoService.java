@@ -8,7 +8,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 
-public class TodoService {    
+public class TodoService{    
     
     JSONObject resultList   = new JSONObject();
     JSONObject taskObject   = new JSONObject();

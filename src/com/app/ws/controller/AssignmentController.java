@@ -23,6 +23,7 @@ public class AssignmentController {
     
     @GET
     @Path("Assignment/{todoId}")
+    @Produces({MediaType.APPLICATION_JSON}) 
     public JSONObject getData(@PathParam("todoId") String todoId) throws Exception{
         AssignmentProcess assignmentProcess = new AssignmentProcess();
         JSONObject result = assignmentProcess.queryTaskList(todoId, "");
@@ -32,6 +33,7 @@ public class AssignmentController {
     
     @GET
     @Path("Assignment/{todoId}/{taskId}")
+    @Produces({MediaType.APPLICATION_JSON}) 
     public JSONObject getData(@PathParam("todoId") String todoId, @PathParam("taskId") String taskId) throws Exception{
         AssignmentProcess assignmentProcess = new AssignmentProcess();
         JSONObject result = assignmentProcess.queryTaskList(todoId, taskId);
