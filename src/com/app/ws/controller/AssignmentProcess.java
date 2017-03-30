@@ -11,16 +11,18 @@ import org.codehaus.jettison.json.JSONObject;
 
 public class AssignmentProcess {
     private static final String I0000 = "Save successfully";
-    private static final String I1000 = "Save failure";
     private static final String I2000 = "Edit successfully";
-    private static final String I3000 = "Edit failure";
     private static final String I4000 = "Delete successfully";
-    private static final String I5000 = "Delete failure";
+    
     
     private static final String E0000 = "Parameter is null";
     private static final String E1000 = "Data not found";
     private static final String E2000 = "Please specify Todo Id";
     private static final String E3000 = "Found error";
+    
+    private static final String E4000 = "Save failure";
+    private static final String E5000 = "Edit failure";
+    private static final String E6000 = "Delete failure";
         
     public AssignmentProcess() {
         super();
@@ -87,14 +89,14 @@ public class AssignmentProcess {
                         jsonResult.put("responseMessage",I0000);    
                     }
                     else{
-                        jsonResult.put("responseCode","I1000");
-                        jsonResult.put("responseMessage",I1000);   
+                        jsonResult.put("responseCode","E4000");
+                        jsonResult.put("responseMessage",E4000);   
                     }
                 }
                 catch( Exception err ){
                     err.printStackTrace();
-                    jsonResult.put("responseCode","I1000");
-                    jsonResult.put("responseMessage",I1000);   
+                    jsonResult.put("responseCode","E4000");
+                    jsonResult.put("responseMessage",E4000);   
                 }
             } 
         }
@@ -124,14 +126,14 @@ public class AssignmentProcess {
                         jsonResult.put("responseMessage",I2000);    
                     }
                     else{
-                        jsonResult.put("responseCode","I3000");
-                        jsonResult.put("responseMessage",I3000);   
+                        jsonResult.put("responseCode","E5000");
+                        jsonResult.put("responseMessage",E5000);   
                     }
                 }
                 catch( Exception err ){
                     err.printStackTrace();
-                    jsonResult.put("responseCode","I3000");
-                    jsonResult.put("responseMessage",I3000);   
+                    jsonResult.put("responseCode","E5000");
+                    jsonResult.put("responseMessage",E5000);   
                 }
             } 
         }
@@ -161,14 +163,14 @@ public class AssignmentProcess {
                         jsonResult.put("responseMessage",I4000);    
                     }
                     else{
-                        jsonResult.put("responseCode","I5000");
-                        jsonResult.put("responseMessage",I5000);   
+                        jsonResult.put("responseCode","E6000");
+                        jsonResult.put("responseMessage",E6000);   
                     }
                 }
                 catch( Exception err ){
                     err.printStackTrace();
-                    jsonResult.put("responseCode","I5000");
-                    jsonResult.put("responseMessage",I5000);   
+                    jsonResult.put("responseCode","E6000");
+                    jsonResult.put("responseMessage",E6000);   
                 }
             } 
         }
