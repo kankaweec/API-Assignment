@@ -112,7 +112,7 @@ dotography  assignment
 
         POST
         
-- URL Params
+- Params
 
   Required:
 
@@ -172,7 +172,7 @@ dotography  assignment
 
         PUT
         
-- URL Params
+- Params
 
   Required:
 
@@ -225,7 +225,7 @@ dotography  assignment
 
         DELETE
         
-- URL Params
+- Params
 
   Required:
 
