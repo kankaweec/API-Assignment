@@ -48,11 +48,18 @@ dotography  assignment
                   ]
         }
         
-      Error Response:
+    Error Response:
       
         {
           "responseCode": "E2000",
           "responseMessage": "Please specify Todo Id"
+        }
+        
+        ----------------------------------------------------------
+        
+        {
+          "responseCode": "E1000",
+          "responseMessage": "Data not found"
         }
         
 
@@ -101,7 +108,7 @@ dotography  assignment
                 }
         ]
         
-        Success Response:
+      Success Response:
   
         {
           "responseCode": "I0000",
@@ -154,7 +161,7 @@ dotography  assignment
                   ]
         }
         
-        Success Response:
+     Success Response:
   
         {
           "responseCode": "I2000",
@@ -204,7 +211,7 @@ dotography  assignment
                   ]
         }
         
-        Success Response:
+     Success Response:
   
         {
           "responseCode": "I4000",
