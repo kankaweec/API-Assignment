@@ -115,7 +115,8 @@ dotography  assignment
 - Params
 
   Required:
-
+  
+        todoId=[String]
         subject=[String]
         status=[String]
 
@@ -125,24 +126,27 @@ dotography  assignment
         
  - Data Params
  
-        [
-                {
-                  "subject": "TEST1",
-                  "status": "pending"
-                },
-                {
-                  "subject": "TEST2",
-                  "status": "done"
-                },
-                {
-                  "subject": "TEST3",
-                  "status": "pending"
-                },
-                {
-                  "subject": "TEST4",
-                  "status": "done"
-                }
-        ]
+        {
+                "todoId": "100",
+                "list":[
+                                {
+                                  "subject": "TEST1",
+                                  "status": "pending"
+                                },
+                                {
+                                  "subject": "TEST2",
+                                  "status": "done"
+                                },
+                                {
+                                  "subject": "TEST3",
+                                  "status": "pending"
+                                },
+                                {
+                                  "subject": "TEST4",
+                                  "status": "done"
+                                }
+                        ]
+        }
         
       Success Response:
   
