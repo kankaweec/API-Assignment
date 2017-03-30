@@ -28,24 +28,56 @@ dotography  assignment
         
  - Data Params
  
-        AssignmentRestService/rest/Assignment/100/101
+        AssignmentRestService/rest/Assignment/100
         
     Success Response:
   
         {
           "todoId": "100",
           "owner": "kankawee",
-          "createDate": "2017-03-30 10:33:09.531",
+          "createDate": "2017-03-30 11:29:25.097",
           "createBy": "kankawee",
-          "modifyDate": "2017-03-30 10:33:09.531",
+          "modifyDate": "2017-03-30 11:29:25.097",
           "modifyBy": "kankawee",
           "list": [
-                    {
-                      "taskId": "101",
-                      "subject": "Assignment 101",
-                      "status": "pending"
-                    }
-                  ]
+            {
+              "taskId": 1,
+              "subject": "Assignment 1",
+              "status": "pending"
+            },
+            {
+              "taskId": 2,
+              "subject": "Assignment 2",
+              "status": "done"
+            },
+            {
+              "taskId": 3,
+              "subject": "Assignment 3",
+              "status": "pending"
+            }
+          ]
+        }
+        
+ - Data Params
+ 
+        AssignmentRestService/rest/Assignment/100/2
+        
+    Success Response:
+  
+        {
+          "todoId": "100",
+          "owner": "kankawee",
+          "createDate": "2017-03-30 11:30:15.108",
+          "createBy": "kankawee",
+          "modifyDate": "2017-03-30 11:30:15.108",
+          "modifyBy": "kankawee",
+          "list": [
+            {
+              "taskId": "2",
+              "subject": "Assignment 2",
+              "status": "done"
+            }
+          ]
         }
         
     Error Response:
@@ -154,7 +186,7 @@ dotography  assignment
           "todoId": "100",          
           "list": [
                     {
-                      "taskId": "101",
+                      "taskId": "1",
                       "subject": "Assignment TEST",
                       "status": "done"
                     }
@@ -206,7 +238,7 @@ dotography  assignment
           "todoId": "100",          
           "list": [
                     {
-                      "taskId": "101",
+                      "taskId": "3",
                     }
                   ]
         }
